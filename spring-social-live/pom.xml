@@ -1,20 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
+		<groupId>com.fg.edee</groupId>
+		<artifactId>parent</artifactId>
+		<version>20160627.01</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	
   	<groupId>com.sachinhandiekar</groupId>
   	<artifactId>spring-social-live</artifactId>
-  	<version>1.0.1-SNAPSHOT</version>
+  	<version>1.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
   	<name>Spring Social Live</name>
  	<description>Spring Social extension with connection support and an API binding for Windows Live API</description>
-
 	
  	<developers>
 		<developer>
@@ -35,13 +34,11 @@
 		</license>
 	</licenses>
 
-
 	<scm>
-		<connection>scm:git:git@github.com/sachin-handiekar/spring-social-live.git</connection>
-		<developerConnection>scm:git:git@github.com:sachin-handiekar/spring-social-live.git</developerConnection>
-		<url>git@github.com:sachin-handiekar/spring-social-live.git</url>
+		<connection>scm:git:ssh://git@github.com:FgForrest/spring-social-live.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:FgForrest/spring-social-live.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
-
 
 	<properties>
 	
@@ -169,32 +166,9 @@
 		
 	</dependencies>
 
-
-
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-
-
-
 	<build>
 
 		<plugins>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.3</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -222,60 +196,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>release-sign-artifacts</id>
-			<activation>
-				<property>
-					<name>gpg-sign</name>
-					<value>true</value>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>2.2.1</version>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>${maven-gpg-plugin.version}</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 	
 </project>
